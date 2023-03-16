@@ -30,45 +30,7 @@ Asked about their origins, Pruis says they're "a little tough to explain" becaus
 The researchers are looking forward to learning much more about the unicorns and their valley.
 ```
 
-This example uses an old OpenAI [prompt](https://openai.com/research/better-language-models). As expected, the LLMs also support few-shot prompting:
-```
-$ minillm generate --model llama-13b-4bit --weights ../GPTQ-for-LLaMa/llama13b-4bit.pt --prompt "English: This parrot is very loud. French:" --temperature 1. --top_k 50 --top_p 0.95 --max-length 500
-Loading LLAMA model
-Done
-English: This parrot is very loud. French: Ce perroquet est fort bruyant. German: Dieser Papagei ist sehr laut. Italian: Questo Papagalli è molto rumoroso.
-```
-
-In this example, the LLM produces an essay on the origins of the industrial revolution.
-```
-$ minillm generate --model llama-13b-4bit --weights ../GPTQ-for-LLaMa/llama13b-4bit.pt --prompt "For today's homework assignment, please explain the causes of the industrial revolution." --temperature 1. --top_k 50 --top_p 0.95 --max-length 500
-Loading LLAMA model
-Done
-For today's homework assignment, please explain the causes of the industrial revolution.
-The Industrial Revolution was not a new invention. It was simply an expansion of an existing technology.
-The major cause of the Industrial Revolution was the invention of the steam engine. Invented in England in the late 1700s by an engineer named James Watt, the steam engine was made possible by the development of the cylinder (which presses together a piston containing high pressure steam, creating an engine that uses steam as a power source). This new technology, which was not an invention of Thomas Newcomen in 1711, greatly influenced the Industrial Revolution.
-Why did the Industrial Revolution occur in Great Britain rather than in other areas of Europe?
-Although England is a small country (209,338 square kilometers or 80,758 square miles), it has a temperate climate that is not too hot or too cold, and its coastal location facilitates trade with other countries. Its proximity to the sea is ideal for fishing, and a well-developed road system, as well as the British canal system, provides rapid transportation within the country.
-The country also has great reserves of coal and iron ore, which provide fuel for its factories. Iron is the most important product of the Industrial Revolution.
-Moreover, the British enjoyed a political stability. England's long tradition of the rule of law and freedom of religion attracted many people from other countries.
-The British government has a long tradition of being friendly to business. It gives foreign investment a friendly hand; indeed, Great Britain has the strongest private property protection of any country. It has a stable and long-standing economy; therefore, it can accept risk easily.
-The British also have a long tradition of respect for innovation and invention. The English invented most of the basic technologies that were used in the 18th-century factories. The English value both science and engineering, and they were also willing to take risks and invest in new technology.
-All of these factors, including a skilled and stable labor force, a reliable work ethic and a tradition of innovation, make Great Britain an ideal location for the first Industrial Revolution.
-```
-For some of these prompts, I generated 2-3 samples and took my favorite (and some samples were not good).
-
-
-Here is another fun example with a different prompt:
-```
-$ minillm generate --model llama-13b-4bit --weights ../GPTQ-for-LLaMa/llama13b-4bit.pt --prompt 'Recycling is good for the world. NO! YOU COULD NOT BE MORE WRONG!!' --temperature 1. --top_k 50 --top_p 0.95 --max-length 300
-Loading LLAMA model
-Done
-Recycling is good for the world. NO! YOU COULD NOT BE MORE WRONG!! Recycling is one of the most destructive concepts on the planet today. It’s not just bad for the environment; recycling is actually a very toxic and polluting industry.
-Recycling has become a religion—a cult—and those who do not recycle are treated as heathens. But there is actually no solid evidence that proves the recycling of the modern world is beneficial for the environment, according to science.
-For example, the world’s first recycling centre opened in Leeds, West Yorkshire in 1840. It was shut down in 1865 because it couldn’t make a profit.
-People believed the earth was endlessly abundant, and plentifully renewing its resources.
-Back then, recycling was uncommon. People reused things, yes, but the concept was still foreign. Today, we recycle tons of goods. But it’s actually a waste of time and energy.
-Why? Well, the recycling industry is destroying everything. For example, China used to accept 4,000 shipping containers full of recyclable material per day from America. Now? Now it only takes 100. That is because the recycling industry is broken beyond repair
-```
+This example is based on an old OpenAI [prompt](https://openai.com/research/better-language-models). See below for additional examples, including automatic essay generation and chain-of-thought prompting.
 
 ## Installation
 
@@ -164,11 +126,50 @@ The following hardware is needed to run different models in MiniLLM:
 | Model | GPU Memory Requirements | Compatible GPUs |
 | ----- | -------------------- | --------------- |
 | llama-7b-4bit | 6GB | RTX 2060, 3050, 3060 |
-| llama-13b-4bit | 10GB | RTX 2060, 3060, 3080 |
+| llama-13b-4bit | 10GB | GTX 1080, RTX 2060, 3060, 3080 |
 | llama-33b-4bit | 20GB |  RTX 3080, A5000, 3090, 4090, V100 |
 | llama-65b-4bit | 40GB | A100, 2x3090, 2x4090, A40, A6000 |
 
 Only NVIDIA GPUs with the Pascal architecture or newer can run the current system.
+
+## Additional Examples
+
+In this example, the LLM produces an essay on the origins of the industrial revolution.
+```
+$ minillm generate --model llama-13b-4bit --weights ../GPTQ-for-LLaMa/llama13b-4bit.pt --prompt "For today's homework assignment, please explain the causes of the industrial revolution." --temperature 1. --top_k 50 --top_p 0.95 --max-length 500
+Loading LLAMA model
+Done
+For today's homework assignment, please explain the causes of the industrial revolution.
+The Industrial Revolution was not a new invention. It was simply an expansion of an existing technology.
+The major cause of the Industrial Revolution was the invention of the steam engine. Invented in England in the late 1700s by an engineer named James Watt, the steam engine was made possible by the development of the cylinder (which presses together a piston containing high pressure steam, creating an engine that uses steam as a power source). This new technology, which was not an invention of Thomas Newcomen in 1711, greatly influenced the Industrial Revolution.
+Why did the Industrial Revolution occur in Great Britain rather than in other areas of Europe?
+Although England is a small country (209,338 square kilometers or 80,758 square miles), it has a temperate climate that is not too hot or too cold, and its coastal location facilitates trade with other countries. Its proximity to the sea is ideal for fishing, and a well-developed road system, as well as the British canal system, provides rapid transportation within the country.
+The country also has great reserves of coal and iron ore, which provide fuel for its factories. Iron is the most important product of the Industrial Revolution.
+Moreover, the British enjoyed a political stability. England's long tradition of the rule of law and freedom of religion attracted many people from other countries.
+The British government has a long tradition of being friendly to business. It gives foreign investment a friendly hand; indeed, Great Britain has the strongest private property protection of any country. It has a stable and long-standing economy; therefore, it can accept risk easily.
+The British also have a long tradition of respect for innovation and invention. The English invented most of the basic technologies that were used in the 18th-century factories. The English value both science and engineering, and they were also willing to take risks and invest in new technology.
+All of these factors, including a skilled and stable labor force, a reliable work ethic and a tradition of innovation, make Great Britain an ideal location for the first Industrial Revolution.
+```
+
+As expected, the LLMs support few-shot prompting. This is a demo of zero-shot translation.
+```
+$ minillm generate --model llama-13b-4bit --weights ../GPTQ-for-LLaMa/llama13b-4bit.pt --prompt "English: This parrot is very loud. French:" --temperature 1. --top_k 50 --top_p 0.95 --max-length 500
+Loading LLAMA model
+Done
+English: This parrot is very loud. French: Ce perroquet est fort bruyant. German: Dieser Papagei ist sehr laut. Italian: Questo Papagalli è molto rumoroso.
+```
+
+Interestingly, `llama-13b-4bit` is responsive to chain-of-thought prompting (though not perfectly):
+```
+$ minillm generate --model llama-13b-4bit --weights ../GPTQ-for-LLaMa/llama13b-4bit.pt --prompt "Q: Roger has 5 tennis balls. He buys 2 more cans of tennis balls. Each can has 3 tennis balls. How many tennis balls does he have now? A: Roger started with 5 balls. 2 cans of 3 tennis balls each is 6 tennis balls. 5 + 6 = 11. The answer is 11. Q: A juggler can juggle 16 balls. Half of the balls are golf balls, and half of the golf balls are blue. How many blue golf balls are there?" --temperature 1. --top_k 50 --top_p 0.95 --max-length 400
+Loading LLAMA model
+Done
+Q: Roger has 5 tennis balls. He buys 2 more cans of tennis balls. Each can has 3 tennis balls. How many tennis balls does he have now? 
+A: Roger started with 5 balls. 2 cans of 3 tennis balls each is 6 tennis balls. 5 + 6 = 11. The answer is 11. 
+Q: A juggler can juggle 16 balls. Half of the balls are golf balls, and half of the golf balls are blue. How many blue golf balls are there? 
+A: We know that there are 16 balls. Half of the balls are golf balls. So we know that there are 8 golf balls. Half of the golf balls are blue, so that is 4 balls.
+```
+These examples were generated on an a NVIDIA GeForce GTX 1080 Ti using the `llama-13b-4bit` model. In several cases, I generated 2-3 samples and took my favorite (i.e., not all samples were good).
 
 ## Todos
 
