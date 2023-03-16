@@ -148,7 +148,7 @@ Only NVIDIA GPUs with the Pascal architecture or newer can run the current syste
 
 In this example, the LLM produces an essay on the origins of the industrial revolution.
 ```
-$ minillm generate --model llama-13b-4bit --weights ../GPTQ-for-LLaMa/llama13b-4bit.pt --prompt "For today's homework assignment, please explain the causes of the industrial revolution." --temperature 1. --top_k 50 --top_p 0.95 --max-length 500
+$ minillm generate --model llama-13b-4bit --weights llama-13b-4bit.pt --prompt "For today's homework assignment, please explain the causes of the industrial revolution." --temperature 1. --top_k 50 --top_p 0.95 --max-length 500
 Loading LLAMA model
 Done
 For today's homework assignment, please explain the causes of the industrial revolution.
@@ -165,7 +165,7 @@ All of these factors, including a skilled and stable labor force, a reliable wor
 
 As expected, the LLMs support few-shot prompting. This is a demo of zero-shot translation.
 ```
-$ minillm generate --model llama-13b-4bit --weights ../GPTQ-for-LLaMa/llama13b-4bit.pt --prompt "English: This parrot is very loud. French:" --temperature 1. --top_k 50 --top_p 0.95 --max-length 500
+$ minillm generate --model llama-13b-4bit --weights llama-13b-4bit.pt --prompt "English: This parrot is very loud. French:" --temperature 1. --top_k 50 --top_p 0.95 --max-length 500
 Loading LLAMA model
 Done
 English: This parrot is very loud. French: Ce perroquet est fort bruyant. German: Dieser Papagei ist sehr laut. Italian: Questo Papagalli è molto rumoroso.
@@ -173,7 +173,7 @@ English: This parrot is very loud. French: Ce perroquet est fort bruyant. German
 
 Interestingly, `llama-13b-4bit` is responsive to chain-of-thought prompting (though not perfectly):
 ```
-$ minillm generate --model llama-13b-4bit --weights ../GPTQ-for-LLaMa/llama13b-4bit.pt --prompt "Q: Roger has 5 tennis balls. He buys 2 more cans of tennis balls. Each can has 3 tennis balls. How many tennis balls does he have now? A: Roger started with 5 balls. 2 cans of 3 tennis balls each is 6 tennis balls. 5 + 6 = 11. The answer is 11. Q: A juggler can juggle 16 balls. Half of the balls are golf balls, and half of the golf balls are blue. How many blue golf balls are there?" --temperature 1. --top_k 50 --top_p 0.95 --max-length 400
+$ minillm generate --model llama-13b-4bit --weights llama-13b-4bit.pt --prompt "Q: Roger has 5 tennis balls. He buys 2 more cans of tennis balls. Each can has 3 tennis balls. How many tennis balls does he have now? A: Roger started with 5 balls. 2 cans of 3 tennis balls each is 6 tennis balls. 5 + 6 = 11. The answer is 11. Q: A juggler can juggle 16 balls. Half of the balls are golf balls, and half of the golf balls are blue. How many blue golf balls are there?" --temperature 1. --top_k 50 --top_p 0.95 --max-length 400
 Loading LLAMA model
 Done
 Q: Roger has 5 tennis balls. He buys 2 more cans of tennis balls. Each can has 3 tennis balls. How many tennis balls does he have now? 
