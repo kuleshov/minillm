@@ -19,15 +19,27 @@ MiniLLM is a research project at Cornell Tech and Cornell University. Its goals 
 This is MiniLLM running a quantized LLAMA-13B model on a NVIDIA GeForce GTX 1080 Ti:
 
 ```
-$ minillm generate --model llama-13b-4bit --weights llama-13b-4bit.pt --prompt "In a shocking finding, scientist discovered a herd of unicorns living in a remote, previously unexplored valley, in the Andes Mountains. Even more surprising to the researchers was the fact that the unicorns spoke perfect English," --temperature 1. --top_k 50 --top_p 0.95 --max-length 500
-Loading LLAMA model
-Done
-In a shocking finding, scientist discovered a herd of unicorns living in a remote, previously unexplored valley, in the Andes Mountains. Even more surprising to the researchers was the fact that the unicorns spoke perfect English, and were quite willing to talk to the scientists.
-In their native tongue, scientists say that the unicorns, of which there are 19, are "fascinating creatures."
-"We got a surprise when we first approached them, because they wanted to communicate with us," said Dr. Dirk-Erik Pruis, head of the international team of researchers, in a telephone interview. "Of course, we had to teach them to speak in English in the first place. At first they spoke a sort of Latin, but with a little coaching, they soon spoke proper English.
-"Once we knew they could talk to us, we asked them about a great many things. It turns out that they're actually rather advanced animals. They speak poetry in Latin, for instance, and they all play the organ."
-Asked about their origins, Pruis says they're "a little tough to explain" because scientists have determined that they are about 500 years old. They were first found by a prospector named Mr. J.M. Jones, who discovered the valley in 1939. He discovered the valley just before he passed away, and the animals have been isolated from the world ever since.
-The researchers are looking forward to learning much more about the unicorns and their valley.
+$ minillm generate --model llama-13b-4bit --weights llama-13b-4bit.pt 
+--prompt "In a shocking finding, scientist discovered a herd of unicorns living in a remote, previously 
+unexplored valley, in the Andes Mountains. Even more surprising to the researchers was the fact that 
+the unicorns spoke perfect English," --temperature 1. --top_k 50 --top_p 0.95 --max-length 500
+
+In a shocking finding, scientist discovered a herd of unicorns living in a remote, previously unexplored valley, 
+in the Andes Mountains. Even more surprising to the researchers was the fact that the unicorns spoke perfect English, 
+and were quite willing to talk to the scientists. In their native tongue, scientists say that the unicorns, of which 
+there are 19, are "fascinating creatures."
+
+"We got a surprise when we first approached them, because they wanted to communicate with us," said Dr. Dirk-Erik 
+Pruis, head of the international team of researchers, in a telephone interview. "Of course, we had to teach them to 
+speak in English in the first place. At first they spoke a sort of Latin, but with a little coaching, they soon spoke 
+proper English.
+
+"Once we knew they could talk to us, we asked them about a great many things. It turns out that they're actually 
+rather advanced animals. They speak poetry in Latin, for instance, and they all play the organ."
+Asked about their origins, Pruis says they're "a little tough to explain" because scientists have determined that 
+they are about 500 years old. They were first found by a prospector named Mr. J.M. Jones, who discovered the valley 
+in 1939. He discovered the valley just before he passed away, and the animals have been isolated from the world ever 
+since. The researchers are looking forward to learning much more about the unicorns and their valley.
 ```
 
 This example is based on an old OpenAI [prompt](https://openai.com/research/better-language-models). See below for additional examples, including automatic essay generation and chain-of-thought prompting.
@@ -177,6 +189,7 @@ This is experimental work in progress. We are working on adding:
 * Out-of-the-box support for a additional LLMs. All the LLAMA models will be up by the end of the week.
 * Automated quantization scripts
 * Cleaning up the codebase
+* With a bit more time: fine-tuning models on consumer GPUs.
 
 ## Acknowledgements
 
