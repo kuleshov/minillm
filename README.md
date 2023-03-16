@@ -36,9 +36,9 @@ This example is based on an old OpenAI [prompt](https://openai.com/research/bett
 
 ### Requirements
 
-Any UNIX environment supporting Python (3.8 or greater) and PyTorch (we tested with 1.13.1+cu116) can run MiniLLM. See `requirements.txt` to reproduce our environment.
+Any UNIX environment supporting Python (3.8 or greater) and PyTorch (we tested with 1.13.1+cu116) can run MiniLLM. See `requirements.txt` for details.
 
-To ensure maximum reproducibility, consider creating an empty conda environment:
+To ensure maximum reproducibility, consider creating a new conda environment:
 ```
 conda create -n minillm
 conda activate minillm
