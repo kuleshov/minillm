@@ -3,7 +3,7 @@
 MiniLLM is a minimal system for running modern LLMs on consumer-grade GPUs. Its features include:
 
 * Support for multiple LLMs (currently LLAMA, BLOOM, OPT) at various model sizes (up to 170B)
-* Support for a wide range of consumer-grade NVIDIA GPUs
+* Support for a wide range of consumer-grade NVIDIA GPUs (`llama-cpp` is for Apple Silicon)
 * Tiny and easy-to-use codebase mostly in Python (<500 LOC)
 
 Underneath the hood, MiniLLM uses the the GPTQ algorithm for up to 3-bit compression and large reductions in GPU memory usage. See the hardware requirements for more information on which LLMs are supported by various GPUs.
