@@ -11,10 +11,10 @@ class LLama13B4BitConfig:
 
 class LLama30B4BitConfig:
     hf_config_name = "decapoda-research/llama-30b-hf"
-    weights_url = None
+    weights_url = "https://huggingface.co/kuleshov/llama-30b-4bit/resolve/main/llama-30b-4bit.pt"
     bits = 4
 
 class LLama65B4BitConfig:
     hf_config_name = "decapoda-research/llama-65b-hf"
-    weights_url = None
+    weights_url = "https://huggingface.co/kuleshov/llama-65b-4bit/resolve/main/llama-65b-4bit.pt"
     bits = 4    
