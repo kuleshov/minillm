@@ -1,9 +1,11 @@
 # :parrot: MiniLLM: Large Language Models on Consumer GPUs
 
-MiniLLM is a minimal system for running modern LLMs on consumer-grade GPUs. Its features include:
+MiniLLM is a minimal system for running modern LLMs on consumer-grade GPUs. While `llama-cpp` allows running LLMs on Apple hardware, MiniLLM enables running a larger set of models on most recent Nvidia GPUs.
+
+Its features include:
 
 * Support for multiple LLMs (currently LLAMA, BLOOM, OPT) at various model sizes (up to 170B)
-* Support for a wide range of consumer-grade NVIDIA GPUs (`llama-cpp` is for Apple Silicon)
+* Support for a wide range of consumer-grade Nvidia GPUs
 * Tiny and easy-to-use codebase mostly in Python (<500 LOC)
 
 Underneath the hood, MiniLLM uses the the GPTQ algorithm for up to 3-bit compression and large reductions in GPU memory usage. See the hardware requirements for more information on which LLMs are supported by various GPUs.
@@ -82,7 +84,12 @@ First, start by downloading the weights of an LLM model:
 ```
 minillm download --model llama-7b-4bit --weights llama-7b-4bit.pt
 ```
-MiniLLM currently supports downloading `llama-7b-4bit` and `llama-13b-4bit`; we will add all the other LLAMA models this week.
+You can also download the weights directly using `wget`:
+```
+wget https://huggingface.co/kuleshov/llama-30b-4bit/resolve/main/llama-30b-4bit.pt
+wget https://huggingface.co/kuleshov/llama-65b-4bit/resolve/main/llama-65b-4bit.pt
+```
+The following models have pre-quantized weights: `llama-7b-4bit`, `llama-13b-4bit`, `llama-30b-4bit`, `llama-65b-4bit`.
 
 ### Generate Text
 
@@ -181,12 +188,33 @@ A: Roger started with 5 balls. 2 cans of 3 tennis balls each is 6 tennis balls. 
 Q: A juggler can juggle 16 balls. Half of the balls are golf balls, and half of the golf balls are blue. How many blue golf balls are there? 
 A: We know that there are 16 balls. Half of the balls are golf balls. So we know that there are 8 golf balls. Half of the golf balls are blue, so that is 4 balls.
 ```
-These examples were generated on an a NVIDIA GeForce GTX 1080 Ti using the `llama-13b-4bit` model. In several cases, I generated 2-3 samples and took my favorite (i.e., not all samples were good).
+These examples were generated on an a NVIDIA GeForce GTX 1080 Ti using the `llama-13b-4bit` model. 
+
+The 30B and 65B parameter models can also do zero-shot chain-of-thought reasoning (i.e., "let's think step-by-step"):
+```
+$ minillm generate --model llama-65b-4bit --weights /share/kuleshov/vk379/llama-65b-4bit.pt --prompt "Q: Roger has 5 tennis balls. He buys 2 more cans of tennis balls. Each can has 3 tennis balls. How many tennis balls does he have now? A: Let's think step-by-step."
+Loading LLAMA model
+Done
+Q: Roger has 5 tennis balls. He buys 2 more cans of tennis balls. Each can has 3 tennis balls. 
+How many tennis balls does he have now? A: Let's think step-by-step.
+Roger has 5 balls
+Roger bought 2 cans
+Each can has 3 balls
+So, Roger has 5 + 2 x 3 = 11 balls now!
+```
+Another example:
+```
+$ minillm generate --model llama-30b-4bit --weights /share/kuleshov/vk379/llama-30b-4bit.pt --prompt "Q: A juggler can juggle 16 balls. Half of the balls are golf balls, and half of the golf balls are blue. How many blue golf balls are there? A: Let's think step by step."
+Loading LLAMA model
+Done
+Q: A juggler can juggle 16 balls. Half of the balls are golf balls, and half of the golf balls are blue. How many blue golf balls are there? A: Let's think step by step. There are 16 balls. The total number of golf balls is 16 / 2 = 8 The number of blue golf balls can be calculated by 8 * 1 / 2 = 4
+```
+In several cases, I generated 2-3 samples and took my favorite (i.e., not all samples were good).
 
 ## Todos
 
 This is experimental work in progress. We are working on adding:
-* Out-of-the-box support for a additional LLMs. All the LLAMA models will be up by the end of the week.
+* Out-of-the-box support for a additional LLMs.
 * Automated quantization scripts
 * Cleaning up the codebase
 * With a bit more time: fine-tuning models on consumer GPUs.
