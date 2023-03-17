@@ -139,7 +139,7 @@ The following hardware is needed to run different models in MiniLLM:
 | ----- | -------------------- | --------------- |
 | llama-7b-4bit | 6GB | RTX 2060, 3050, 3060 |
 | llama-13b-4bit | 10GB | GTX 1080, RTX 2060, 3060, 3080 |
-| llama-33b-4bit | 20GB |  RTX 3080, A5000, 3090, 4090, V100 |
+| llama-30b-4bit | 20GB |  RTX 3080, A5000, 3090, 4090, V100 |
 | llama-65b-4bit | 40GB | A100, 2x3090, 2x4090, A40, A6000 |
 
 Only NVIDIA GPUs with the Pascal architecture or newer can run the current system.
