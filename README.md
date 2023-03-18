@@ -57,6 +57,9 @@ To ensure maximum reproducibility, consider creating a new conda environment:
 conda create -n minillm
 conda activate minillm
 conda install git pip virtualenv
+# if you have not already installed CUDA in your system environment
+# so that, for instance, nvcc is not in your PATH, then also:
+conda install -c "nvidia/label/cuda-11.6.2" cuda-toolkit
 ```
 MiniLLM also requries an NVIDIA GPU (Pascal architecture or newer); other platforms are currently unsupported.
 
