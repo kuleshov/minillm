@@ -1,8 +1,6 @@
 # :parrot: MiniLLM: Large Language Models on Consumer GPUs
 
-MiniLLM is a minimal system for running modern LLMs on consumer-grade GPUs. While `llama-cpp` allows running LLMs on Apple hardware, MiniLLM enables running a larger set of models on most recent Nvidia GPUs.
-
-Its features include:
+MiniLLM is a minimal system for running modern LLMs on consumer-grade GPUs. Its features include:
 
 * Support for multiple LLMs (currently LLAMA, BLOOM, OPT) at various model sizes (up to 170B)
 * Support for a wide range of consumer-grade Nvidia GPUs
