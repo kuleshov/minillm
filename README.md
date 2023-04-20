@@ -66,7 +66,7 @@ MiniLLM also requries an NVIDIA GPU (Pascal architecture or newer); other platfo
 We use `distutils` to package MiniLLM. If you are not running conda, you can also create a `virtualenv`.
 ```
 virtualenv minillm_env
-source /minillm_env/bin/activate
+source minillm_env/bin/activate
 pip install -r requirements.txt   # installs torch and two other packages
 python setup.py install           # installs minillm in your environment
 export CUDA_VISIBLE_DEVICES=0     # your GPU should be visible
