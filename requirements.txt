@@ -1,4 +1,4 @@
 --extra-index-url https://download.pytorch.org/whl/cu116
 torch==1.13.1+cu116
 sentencepiece==0.1.97
-git+https://github.com/zphang/transformers@660dd6e2bbc9255aacd0e60084cf15df1b6ae00d#egg=transformers
+transformers==4.28.1

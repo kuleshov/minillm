@@ -19,10 +19,10 @@ def load_llm(model, weights):
 def generate(
     llm, llm_config, prompt, min_length, max_length, temperature, top_k, top_p
 ):
-    from transformers import AutoTokenizer
+    from transformers import LlamaTokenizer
 
     llm.to(DEV)
-    tokenizer = AutoTokenizer.from_pretrained(llm_config.hf_config_name)
+    tokenizer = LlamaTokenizer.from_pretrained(llm_config.hf_config_name)
     input_ids = tokenizer.encode(prompt, return_tensors="pt").to(DEV)
 
     with torch.no_grad():
