@@ -227,6 +227,19 @@ MiniLLM is based on the following projects:
 * The Transformer library, and its extension to use LLAMA models by [zphang](https://github.com/zphang/transformers/tree/llama_push)
 * The LLAMA, OPT, and BLOOM models by META FAIR and the BigScience consortium.
 
+## Citations
+
+Please cite this repository if you use our system.
+
+@misc{llmtune,
+  author = {Volodymyr Kuleshov},
+  title = {MiniLLM: Large Language Models on Consumer GPUs},
+  year = {2023},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/kuleshov/minillm}},
+}
+
 ## Feedback
 
 Please send feedback to [Volodymyr Kuleshov](https://www.cs.cornell.edu/~kuleshov/).
