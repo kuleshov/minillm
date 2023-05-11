@@ -231,6 +231,7 @@ MiniLLM is based on the following projects:
 
 Please cite this repository if you use our system.
 
+```
 @misc{llmtune,
   author = {Volodymyr Kuleshov},
   title = {MiniLLM: Large Language Models on Consumer GPUs},
@@ -239,6 +240,7 @@ Please cite this repository if you use our system.
   journal = {GitHub repository},
   howpublished = {\url{https://github.com/kuleshov/minillm}},
 }
+```
 
 ## Feedback
 
