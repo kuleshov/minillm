@@ -1,17 +1,15 @@
 import torch
-import torch.nn as nn
 
-from minillm.config import DEV
 from minillm.utils import find_layers
 from minillm.engine.converter import make_quant
 
 def load_llama(llm_config, checkpoint):
     import transformers
-    from transformers import LLaMAConfig, LLaMAForCausalLM
+    from transformers import LlamaConfig, LlamaForCausalLM
     def noop(*args, **kwargs):
         pass
 
-    config = LLaMAConfig.from_pretrained(llm_config.hf_config_name)
+    config = LlamaConfig.from_pretrained(llm_config.hf_config_name)
     torch.nn.init.kaiming_uniform_ = noop 
     torch.nn.init.uniform_ = noop 
     torch.nn.init.normal_ = noop 
@@ -19,7 +17,7 @@ def load_llama(llm_config, checkpoint):
     torch.set_default_dtype(torch.half)
     transformers.modeling_utils._init_weights = False
     torch.set_default_dtype(torch.half)
-    model = LLaMAForCausalLM(config)
+    model = LlamaForCausalLM(config)
     torch.set_default_dtype(torch.float)
     model = model.eval()
     layers = find_layers(model)
